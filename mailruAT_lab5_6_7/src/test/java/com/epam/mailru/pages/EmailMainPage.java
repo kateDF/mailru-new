@@ -13,6 +13,9 @@ public class EmailMainPage extends AbstractPage {
     @FindBy(id = "PH_user-email")
     private WebElement userEmailActual;
 
+    @FindBy(xpath = "//a[@data-name='compose']")
+    private WebElement createMessageButton;
+
     public EmailMainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -25,6 +28,10 @@ public class EmailMainPage extends AbstractPage {
     public String getCurrentUserEmail() {
         waitForVisibility(userEmailActual);
         return userEmailActual.getText();
+    }
+
+    public void clickCreateMessage() {
+        waitForClicableAndClick(createMessageButton);
     }
 
 }

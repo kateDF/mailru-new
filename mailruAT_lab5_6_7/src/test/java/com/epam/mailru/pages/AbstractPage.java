@@ -18,4 +18,9 @@ public abstract class AbstractPage {
                 .until(ExpectedConditions.visibilityOfAllElements(element));
     }
 
+    protected void waitForClicableAndClick(WebElement element) {
+        new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
 }
