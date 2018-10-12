@@ -10,13 +10,21 @@ public class EmailMainPage extends AbstractPage {
     @FindBy(id = "PH_logoutLink")
     private WebElement logOutButton;
 
+    @FindBy(id = "PH_user-email")
+    private WebElement userEmailActual;
+
     public EmailMainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void clickLogOut(){
+    public void clickLogOut() {
         logOutButton.click();
+    }
+
+    public String getCurrentUserEmail() {
+        waitForVisibility(userEmailActual);
+        return userEmailActual.getText();
     }
 
 }

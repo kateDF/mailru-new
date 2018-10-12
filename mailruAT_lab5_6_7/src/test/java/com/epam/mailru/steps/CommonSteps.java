@@ -18,7 +18,7 @@ public class CommonSteps {
         return mainPage;
     }
 
-    public EmailMainPage logIn(String username, String password){
+    public EmailMainPage logIn(String username, String password) {
         MainPage mainPage = new MainPage(driver);
         mainPage.enterUsername(username);
         mainPage.enterPassword(password);
@@ -27,10 +27,15 @@ public class CommonSteps {
         return new EmailMainPage(driver);
     }
 
-    public MainPage logOut(){
+    public MainPage logOut() {
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickLogOut();
         return new MainPage(driver);
+    }
+
+    public String getCurrentUser() {
+        EmailMainPage emailMainPage = new EmailMainPage(driver);
+        return emailMainPage.getCurrentUserEmail();
     }
 
 }
