@@ -3,7 +3,6 @@ package com.epam.mailru.steps;
 import com.epam.mailru.pages.EmailMainPage;
 import com.epam.mailru.pages.MainPage;
 import org.openqa.selenium.WebDriver;
-import org.testng.reporters.jq.Main;
 
 public class CommonSteps {
 
@@ -26,6 +25,12 @@ public class CommonSteps {
         mainPage.selectDoNotRemember();
         mainPage.clickSubmit();
         return new EmailMainPage(driver);
+    }
+
+    public MainPage logOut(){
+        EmailMainPage emailMainPage = new EmailMainPage(driver);
+        emailMainPage.clickLogOut();
+        return new MainPage(driver);
     }
 
 }
