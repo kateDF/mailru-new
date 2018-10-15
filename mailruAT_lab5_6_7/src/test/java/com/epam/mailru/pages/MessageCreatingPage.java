@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MessageCreatingPage extends AbstractPage {
 
-
     private static final String BASE_URL = "https://e.mail.ru/compose/";
 
     @FindBy(xpath = "//textarea[@tabindex='4']")
@@ -28,6 +27,9 @@ public class MessageCreatingPage extends AbstractPage {
 
     @FindBy(xpath = "//div[@data-name='send']")
     private WebElement sendButton;
+
+    @FindBy(xpath = "//div[@data-mnemo='saveStatus']/span[@class='time']")
+    private WebElement saveTime;
 
     public void openPage() {
         // this if prevent reopening the same page
@@ -64,6 +66,12 @@ public class MessageCreatingPage extends AbstractPage {
 
     public void saveEmailAsDraft() {
         saveAsDraftButton.click();
+        waitForVisibility(saveTime);
+    }
+
+    public String getTimeOfSaving(){
+        waitForVisibility(saveTime);
+        return saveTime.getText();
     }
 
 }

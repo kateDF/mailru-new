@@ -27,7 +27,7 @@ public class EmailFoldersList {
     }
 
     public DraftsPage goToSentEmailsPage(){
-        draftsPageButton.click();
+        sentEmailsPageButton.click();
         return new DraftsPage(driver);
     }
 

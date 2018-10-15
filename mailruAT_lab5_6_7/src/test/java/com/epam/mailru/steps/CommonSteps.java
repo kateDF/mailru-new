@@ -1,6 +1,8 @@
 package com.epam.mailru.steps;
 
+import com.epam.mailru.components.EmailFoldersList;
 import com.epam.mailru.entity.Email;
+import com.epam.mailru.pages.DraftsPage;
 import com.epam.mailru.pages.EmailMainPage;
 import com.epam.mailru.pages.MainPage;
 import com.epam.mailru.pages.MessageCreatingPage;
@@ -40,19 +42,30 @@ public class CommonSteps {
         return emailMainPage.getCurrentUserEmail();
     }
 
-    public MessageCreatingPage openCreateMessagePage(){
+    public MessageCreatingPage openCreateMessagePage() {
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickCreateMessage();
         return new MessageCreatingPage(driver);
     }
 
-    public void createMessage(Email email){
+    public void createMessage(Email email) {
         MessageCreatingPage createPage = new MessageCreatingPage(driver);
         createPage.createMessage(email);
     }
-    public void saveAsDraft(){
+
+    public void saveAsDraft() {
         MessageCreatingPage createPage = new MessageCreatingPage(driver);
         createPage.saveEmailAsDraft();
+    }
+
+    public String getSaveTime() {
+        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        return createPage.getTimeOfSaving();
+    }
+
+    public DraftsPage openDrafts(){
+        EmailFoldersList folderList = new EmailFoldersList(driver);
+        return folderList.goToDrafts();
     }
 
 }

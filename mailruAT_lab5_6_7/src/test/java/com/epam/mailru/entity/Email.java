@@ -5,6 +5,7 @@ public class Email {
     private String recipientEmail;
     private String subject;
     private String textMessage;
+    private String timeOfSaving;
     private String timeOfSending;
     private boolean deliveryNotification;
 
@@ -64,6 +65,14 @@ public class Email {
         this.timeOfSending = timeOfSending;
     }
 
+    public String getTimeOfSaving() {
+        return timeOfSaving;
+    }
+
+    public void setTimeOfSaving(String timeOfSaving) {
+        this.timeOfSaving = timeOfSaving;
+    }
+
     public boolean isDeliveryNotification() {
         return deliveryNotification;
     }
@@ -84,6 +93,7 @@ public class Email {
             return false;
         if (subject != null ? !subject.equals(email.subject) : email.subject != null) return false;
         if (textMessage != null ? !textMessage.equals(email.textMessage) : email.textMessage != null) return false;
+        if (timeOfSaving != null ? !timeOfSaving.equals(email.timeOfSaving) : email.timeOfSaving != null) return false;
         return timeOfSending != null ? timeOfSending.equals(email.timeOfSending) : email.timeOfSending == null;
     }
 
@@ -92,6 +102,7 @@ public class Email {
         int result = recipientEmail != null ? recipientEmail.hashCode() : 0;
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (textMessage != null ? textMessage.hashCode() : 0);
+        result = 31 * result + (timeOfSaving != null ? timeOfSaving.hashCode() : 0);
         result = 31 * result + (timeOfSending != null ? timeOfSending.hashCode() : 0);
         result = 31 * result + (deliveryNotification ? 1 : 0);
         return result;
@@ -103,6 +114,7 @@ public class Email {
                 "recipientEmail='" + recipientEmail + '\'' +
                 ", subject='" + subject + '\'' +
                 ", textMessage='" + textMessage + '\'' +
+                ", timeOfSaving='" + timeOfSaving + '\'' +
                 ", timeOfSending='" + timeOfSending + '\'' +
                 ", deliveryNotification=" + deliveryNotification +
                 '}';
