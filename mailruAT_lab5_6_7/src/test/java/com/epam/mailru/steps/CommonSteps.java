@@ -50,5 +50,9 @@ public class CommonSteps {
         MessageCreatingPage createPage = new MessageCreatingPage(driver);
         createPage.createMessage(email);
     }
+    public void saveAsDraft(){
+        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        createPage.saveEmailAsDraft();
+    }
 
 }

@@ -23,6 +23,11 @@ public class MessageCreatingPage extends AbstractPage {
     @FindBy(id = "tinymce")
     private WebElement textAreaMessage;
 
+    @FindBy(xpath = "//div[@data-name='saveDraft']")
+    private WebElement saveAsDraftButton;
+
+    @FindBy(xpath = "//div[@data-name='send']")
+    private WebElement sendButton;
 
     public void openPage() {
         // this if prevent reopening the same page
@@ -36,25 +41,29 @@ public class MessageCreatingPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void createMessage(Email email){
-        enterRecepient(email.getRecepientEmail());
+    public void createMessage(Email email) {
+        enterRecipient(email.getRecipientEmail());
         enterSubject(email.getSubject());
         enterTestMessage(email.getTextMessage());
     }
 
-    public void enterRecepient(String email){
+    public void enterRecipient(String email) {
         intputRecepient.sendKeys(email);
     }
 
-    public void enterSubject(String subject){
+    public void enterSubject(String subject) {
         inputSubject.sendKeys(subject);
     }
 
-    public void enterTestMessage(String message){
+    public void enterTestMessage(String message) {
         driver.switchTo().frame(containerForFrameMessageInput);
         textAreaMessage.clear();
         textAreaMessage.sendKeys(message);
         driver.switchTo().defaultContent();
+    }
+
+    public void saveEmailAsDraft() {
+        saveAsDraftButton.click();
     }
 
 }
