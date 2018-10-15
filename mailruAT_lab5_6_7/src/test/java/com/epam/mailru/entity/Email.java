@@ -5,8 +5,7 @@ public class Email {
     private String recipientEmail;
     private String subject;
     private String textMessage;
-    private String timeOfSaving;
-    private String timeOfSending;
+    private String time;
     private boolean deliveryNotification;
 
     public Email() {
@@ -18,18 +17,18 @@ public class Email {
         this.textMessage = textMessage;
     }
 
-    public Email(String recipientEmail, String subject, String textMessage, String timeOfSending) {
+    public Email(String recipientEmail, String subject, String textMessage, String time) {
         this.recipientEmail = recipientEmail;
         this.subject = subject;
         this.textMessage = textMessage;
-        this.timeOfSending = timeOfSending;
+        this.time = time;
     }
 
-    public Email(String recepientEmail, String subject, String textMessage, String timeOfSending, boolean deliveryNotification) {
-        this.recipientEmail = recepientEmail;
+    public Email(String recipientEmail, String subject, String textMessage, String time, boolean deliveryNotification) {
+        this.recipientEmail = recipientEmail;
         this.subject = subject;
         this.textMessage = textMessage;
-        this.timeOfSending = timeOfSending;
+        this.time = time;
         this.deliveryNotification = deliveryNotification;
     }
 
@@ -57,20 +56,12 @@ public class Email {
         this.textMessage = textMessage;
     }
 
-    public String getTimeOfSending() {
-        return timeOfSending;
+    public String getTime() {
+        return time;
     }
 
-    public void setTimeOfSending(String timeOfSending) {
-        this.timeOfSending = timeOfSending;
-    }
-
-    public String getTimeOfSaving() {
-        return timeOfSaving;
-    }
-
-    public void setTimeOfSaving(String timeOfSaving) {
-        this.timeOfSaving = timeOfSaving;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public boolean isDeliveryNotification() {
@@ -93,8 +84,7 @@ public class Email {
             return false;
         if (subject != null ? !subject.equals(email.subject) : email.subject != null) return false;
         if (textMessage != null ? !textMessage.equals(email.textMessage) : email.textMessage != null) return false;
-        if (timeOfSaving != null ? !timeOfSaving.equals(email.timeOfSaving) : email.timeOfSaving != null) return false;
-        return timeOfSending != null ? timeOfSending.equals(email.timeOfSending) : email.timeOfSending == null;
+        return time != null ? time.equals(email.time) : email.time == null;
     }
 
     @Override
@@ -102,8 +92,7 @@ public class Email {
         int result = recipientEmail != null ? recipientEmail.hashCode() : 0;
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (textMessage != null ? textMessage.hashCode() : 0);
-        result = 31 * result + (timeOfSaving != null ? timeOfSaving.hashCode() : 0);
-        result = 31 * result + (timeOfSending != null ? timeOfSending.hashCode() : 0);
+        result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (deliveryNotification ? 1 : 0);
         return result;
     }
@@ -114,8 +103,7 @@ public class Email {
                 "recipientEmail='" + recipientEmail + '\'' +
                 ", subject='" + subject + '\'' +
                 ", textMessage='" + textMessage + '\'' +
-                ", timeOfSaving='" + timeOfSaving + '\'' +
-                ", timeOfSending='" + timeOfSending + '\'' +
+                ", time='" + time + '\'' +
                 ", deliveryNotification=" + deliveryNotification +
                 '}';
     }
