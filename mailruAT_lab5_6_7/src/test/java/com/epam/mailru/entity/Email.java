@@ -96,5 +96,5 @@ public class Email {
         result = 31 * result + (deliveryNotification ? 1 : 0);
         return result;
     }
-    
+
 }

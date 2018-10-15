@@ -1,8 +1,9 @@
 package com.epam.mailru.steps;
 
+import com.epam.mailru.entity.Email;
 import com.epam.mailru.pages.EmailMainPage;
 import com.epam.mailru.pages.MainPage;
-import com.epam.mailru.pages.CreateMessagePage;
+import com.epam.mailru.pages.MessageCreatingPage;
 import org.openqa.selenium.WebDriver;
 
 public class CommonSteps {
@@ -39,10 +40,15 @@ public class CommonSteps {
         return emailMainPage.getCurrentUserEmail();
     }
 
-    public CreateMessagePage openCreateMessagePage(){
+    public MessageCreatingPage openCreateMessagePage(){
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickCreateMessage();
-        return new CreateMessagePage(driver);
+        return new MessageCreatingPage(driver);
+    }
+
+    public void createMessage(Email email){
+        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        createPage.createMessage(email);
     }
 
 }
