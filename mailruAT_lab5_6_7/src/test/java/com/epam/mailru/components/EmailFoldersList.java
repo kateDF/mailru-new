@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EmailFoldersList {
+public class EmailFoldersList extends AbstractComponent {
 
     @FindBy(xpath = "//div[@data-id='500000']/a")
     private WebElement sentEmailsPageButton;
@@ -17,17 +17,17 @@ public class EmailFoldersList {
     private WebDriver driver;
 
     public EmailFoldersList(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public DraftsPage goToDrafts(){
-        draftsPageButton.click();
+        waitForClicableAndClick(draftsPageButton);
         return new DraftsPage(driver);
     }
 
     public DraftsPage goToSentEmailsPage(){
-        sentEmailsPageButton.click();
+        waitForClicableAndClick(sentEmailsPageButton);
         return new DraftsPage(driver);
     }
 
