@@ -11,13 +11,13 @@ public abstract class BaseTest {
     protected CommonSteps steps;
 
     @BeforeClass
-    public void setUpTest() {
+    public void setUp() {
         WebDriver chromeDriver = ChromeWebdriver.getInstance();
         steps = new CommonSteps(chromeDriver);
     }
 
     @AfterClass
-    public void closeDriver() {
+    public void tearDown() {
         ChromeWebdriver.closeDriver();
     }
 
