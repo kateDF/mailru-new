@@ -42,7 +42,7 @@ public class CommonSteps {
         return emailMainPage.getCurrentUserEmail();
     }
 
-    public MessageCreatingPage openCreateMessagePage() {
+    public MessageCreatingPage clickCreateMessage() {
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickCreateMessage();
         return new MessageCreatingPage(driver);
@@ -63,9 +63,19 @@ public class CommonSteps {
         return createPage.getTimeOfSaving();
     }
 
-    public DraftsPage openDrafts(){
+    public DraftsPage openDrafts() {
         EmailFoldersList folderList = new EmailFoldersList(driver);
         return folderList.goToDrafts();
+    }
+
+    public boolean hasMessageInDrafts(Email email, String time) {
+        DraftsPage draftsPage = new DraftsPage(driver);
+        return draftsPage.hasInDrafts(email, time);
+    }
+
+    public boolean findAndOpenMessageFromDrafts(Email email, String time) {
+        DraftsPage draftsPage = new DraftsPage(driver);
+        return draftsPage.searchAndOpenFromDrafts(email, time);
     }
 
 }
