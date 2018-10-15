@@ -24,15 +24,15 @@ public class DraftsPage extends AbstractPage {
     }
 
 
-    public boolean hasInDrafts(Email email, String savingTime) {
-        if (findInDrafts(email, savingTime) != null) {
+    public boolean hasInDrafts(Email email) {
+        if (findInDrafts(email) != null) {
             return true;
         }
         return false;
     }
 
-    public boolean searchAndOpenFromDrafts(Email email, String savingTime) {
-        WebElement linkToFoundEmail = findInDrafts(email, savingTime);
+    public boolean searchAndOpenFromDrafts(Email email) {
+        WebElement linkToFoundEmail = findInDrafts(email);
         if (linkToFoundEmail != null) {
             linkToFoundEmail.click();
             return true;
@@ -40,7 +40,7 @@ public class DraftsPage extends AbstractPage {
         return false;
     }
 
-    private WebElement findInDrafts(Email email, String savingTime){
+    private WebElement findInDrafts(Email email){
         //TODO: add checking by text content
         for (WebElement message : draftMessagesAsElements) {
             WebElement recipientAct = message.findElement(RECIPIENT_IN_DRAFT_ELEMENT);
@@ -49,7 +49,7 @@ public class DraftsPage extends AbstractPage {
                 if (subjectAct == null & email.getSubject() == null
                         || subjectAct.getText().contains(email.getSubject())) {
                     WebElement time = message.findElement(TIME_IN_DRAFT_ELEMENT);
-                    if (savingTime.equals(time.getText())) {
+                    if (email.getTime().equals(time.getText())){
                         return message;
                     }
                 }

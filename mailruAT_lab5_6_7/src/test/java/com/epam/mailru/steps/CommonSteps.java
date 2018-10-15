@@ -68,14 +68,19 @@ public class CommonSteps {
         return folderList.goToDrafts();
     }
 
-    public boolean hasMessageInDrafts(Email email, String time) {
+    public boolean hasMessageInDrafts(Email email) {
         DraftsPage draftsPage = new DraftsPage(driver);
-        return draftsPage.hasInDrafts(email, time);
+        return draftsPage.hasInDrafts(email);
     }
 
-    public boolean findAndOpenMessageFromDrafts(Email email, String time) {
+    public boolean findAndOpenMessageFromDrafts(Email email) {
         DraftsPage draftsPage = new DraftsPage(driver);
-        return draftsPage.searchAndOpenFromDrafts(email, time);
+        return draftsPage.searchAndOpenFromDrafts(email);
+    }
+
+    public void sendMessage(){
+        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        createPage.clickSendButton();
     }
 
 }

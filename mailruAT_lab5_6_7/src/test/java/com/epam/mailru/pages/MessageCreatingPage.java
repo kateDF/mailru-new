@@ -74,4 +74,8 @@ public class MessageCreatingPage extends AbstractPage {
         return saveTime.getText();
     }
 
+    public void clickSendButton(){
+        waitForClicableAndClick(sendButton);
+    }
+
 }
