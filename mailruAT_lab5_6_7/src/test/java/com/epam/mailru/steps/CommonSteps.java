@@ -1,10 +1,11 @@
 package com.epam.mailru.steps;
 
 import com.epam.mailru.components.EmailFoldersList;
-import com.epam.mailru.components.MessagesList;
 import com.epam.mailru.entity.Email;
 import com.epam.mailru.pages.*;
 import org.openqa.selenium.WebDriver;
+
+import java.time.LocalTime;
 
 public class CommonSteps {
 
@@ -66,20 +67,35 @@ public class CommonSteps {
         return folderList.goToDrafts();
     }
 
-    public boolean hasMessageInList(Email email) {
-        MessagesList messageList = new MessagesList(driver);
-        return messageList.hasInMessageInEmailList(email);
-    }
-
-    public boolean openMessageFromList(Email email) {
-        MessagesList messageList = new MessagesList(driver);
-        return messageList.openMessageFromList(email);
-    }
-
     public ConfirmationPage sendMessage(){
         MessageCreatingPage createPage = new MessageCreatingPage(driver);
         createPage.clickSendButton();
         return new ConfirmationPage(driver);
+    }
+
+    public SentEmailsPage openSentEmailsPage() {
+        EmailFoldersList folderList = new EmailFoldersList(driver);
+        return folderList.goToSentEmailsPage();
+    }
+
+    public void saveTimeOfSending(Email email){
+        LocalTime time = LocalTime.now();
+        email.setTime(time.toString().substring(0, 5));
+    }
+
+    public boolean openMessageFromDrafts(Email email) {
+        DraftsPage draftsPage = new DraftsPage(driver);
+        return draftsPage.openMessageFromEmailList(email);
+    }
+
+    public boolean hasMessageInDrafts(Email email) {
+        DraftsPage draftsPage = new DraftsPage(driver);
+        return draftsPage.hasInList(email);
+    }
+
+    public boolean hasMessageInSentEmails(Email email) {
+        SentEmailsPage sentEmails = new SentEmailsPage(driver);
+        return sentEmails.hasInList(email);
     }
 
 }

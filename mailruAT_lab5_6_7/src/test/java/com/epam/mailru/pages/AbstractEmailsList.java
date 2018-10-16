@@ -1,4 +1,4 @@
-package com.epam.mailru.components;
+package com.epam.mailru.pages;
 
 import com.epam.mailru.entity.Email;
 import org.openqa.selenium.By;
@@ -9,35 +9,36 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MessagesList extends AbstractComponent {
+public abstract class AbstractEmailsList extends AbstractPage {
 
     private static final By RECIPIENT_IN_DRAFT_ELEMENT = By.xpath("div//div[@class='b-datalist__item__addr']");
     private static final By SUBJECT_IN_DRAFT_ELEMENT = By.xpath("div//div[@class='b-datalist__item__subj']");
-    private static final By TIME_IN_DRAFT_ELEMENT = By.xpath("div//span[contains(@class, 'date__value')]");
 
     @FindBy(xpath = "//div[contains(@class,'letters_to')]//a[contains(@class, 'b-datalist__item__link')]")
-    List<WebElement> messagesAsElements;
+    private List<WebElement> messagesAsElements;
 
-
-    public MessagesList(WebDriver driver) {
+    public AbstractEmailsList(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public boolean hasInMessageInEmailList(Email email) {
+    public boolean hasInList(Email email) {
+        //TODO: smth instead of refresh
+        driver.navigate().refresh();
         return findInList(email) != null;
     }
 
-    public boolean openMessageFromList(Email email) {
+    public boolean openMessageFromEmailList(Email email) {
         WebElement linkToFoundEmail = findInList(email);
         if (linkToFoundEmail != null) {
             linkToFoundEmail.click();
+            waitForDocumentReady();
             return true;
         }
         return false;
     }
 
-    private WebElement findInList(Email email){
+    private WebElement findInList(Email email) {
         //TODO: add checking by text content
         for (WebElement message : messagesAsElements) {
             WebElement recipientAct = message.findElement(RECIPIENT_IN_DRAFT_ELEMENT);
@@ -45,10 +46,7 @@ public class MessagesList extends AbstractComponent {
                 WebElement subjectAct = message.findElement(SUBJECT_IN_DRAFT_ELEMENT);
                 if (subjectAct == null & email.getSubject() == null
                         || subjectAct.getText().contains(email.getSubject())) {
-                    WebElement time = message.findElement(TIME_IN_DRAFT_ELEMENT);
-                    if (email.getTime().equals(time.getText())){
-                        return message;
-                    }
+                    return message;
                 }
             }
         }
