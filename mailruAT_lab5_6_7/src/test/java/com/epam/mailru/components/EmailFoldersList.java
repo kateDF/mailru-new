@@ -1,6 +1,7 @@
 package com.epam.mailru.components;
 
 import com.epam.mailru.pages.DraftsPage;
+import com.epam.mailru.pages.SentEmailsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,14 +22,14 @@ public class EmailFoldersList extends AbstractComponent {
         PageFactory.initElements(driver, this);
     }
 
-    public DraftsPage goToDrafts(){
+    public DraftsPage goToDrafts() {
         waitForClicableAndClick(draftsPageButton);
         return new DraftsPage(driver);
     }
 
-    public DraftsPage goToSentEmailsPage(){
+    public SentEmailsPage goToSentEmailsPage() {
         waitForClicableAndClick(sentEmailsPageButton);
-        return new DraftsPage(driver);
+        return new SentEmailsPage(driver);
     }
 
 }

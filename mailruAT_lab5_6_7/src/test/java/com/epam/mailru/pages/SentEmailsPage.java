@@ -3,9 +3,9 @@ package com.epam.mailru.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class SentEmailPage extends AbstractPage {
+public class SentEmailsPage extends AbstractPage {
 
-    public SentEmailPage(WebDriver driver) {
+    public SentEmailsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
