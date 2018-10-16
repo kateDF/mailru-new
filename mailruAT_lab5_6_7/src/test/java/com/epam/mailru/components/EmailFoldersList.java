@@ -23,12 +23,14 @@ public class EmailFoldersList extends AbstractComponent {
     }
 
     public DraftsPage goToDrafts() {
-        waitForClicableAndClick(draftsPageButton);
+        waitElementRefresh(draftsPageButton);
+        draftsPageButton.click();
         return new DraftsPage(driver);
     }
 
     public SentEmailsPage goToSentEmailsPage() {
         waitForClicableAndClick(sentEmailsPageButton);
+        waitForDocumentReady();
         return new SentEmailsPage(driver);
     }
 
