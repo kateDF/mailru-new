@@ -16,7 +16,7 @@ public class LogInTest extends BaseTest {
     }
 
     @Test
-    public void tryTest() {
+    public void logInTest() {
         steps.logIn(USERNAME, PASSWORD);
         String actualUser = steps.getCurrentUser();
         Assert.assertEquals(actualUser, USERNAME + EMAIL_DOMAIN,
