@@ -69,13 +69,14 @@ public class MessageCreatingPage extends AbstractPage {
         waitForVisibility(saveTime);
     }
 
-    public String getTimeOfSaving(){
+    public String getTimeOfSaving() {
         waitForVisibility(saveTime);
         return saveTime.getText();
     }
 
-    public void clickSendButton(){
+    public void clickSendButton() {
         waitForDocumentReady();
+        waitElementRefresh(sendButton);
         sendButton.click();
     }
 
