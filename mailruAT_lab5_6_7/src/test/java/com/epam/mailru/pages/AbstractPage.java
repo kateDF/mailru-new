@@ -2,6 +2,7 @@ package com.epam.mailru.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,7 +15,7 @@ public abstract class AbstractPage {
     }
 
     protected void waitForVisibility(WebElement element) {
-        new WebDriverWait(driver, 10)
+        new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.visibilityOfAllElements(element));
     }
 
@@ -27,4 +28,8 @@ public abstract class AbstractPage {
         new WebDriverWait(driver, 10).until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
     }
 
+    protected void waitElementRefresh(WebElement element) {
+        new WebDriverWait(driver, 15)
+                .until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+    }
 }

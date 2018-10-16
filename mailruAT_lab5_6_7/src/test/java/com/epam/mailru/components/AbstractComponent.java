@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractComponent {
 
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public AbstractComponent(WebDriver driver) {
         this.driver = driver;
@@ -17,5 +17,16 @@ public abstract class AbstractComponent {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.elementToBeClickable(element)).click();
     }
+
+    protected void waitForDocumentReady() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
+    }
+
+
+    protected void waitElementRefresh(WebElement element) {
+        new WebDriverWait(driver, 15)
+                .until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+    }
+
 
 }
