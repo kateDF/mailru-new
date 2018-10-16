@@ -24,7 +24,7 @@ public class CreateEmailAndSaveDraftTest extends BaseTest {
         steps.saveAsDraft();
         message.setTime(steps.getSaveTime());
         steps.openDrafts();
-        Assert.assertTrue(steps.hasMessageInDrafts(message), "Message was not found in drafts.");
+        Assert.assertTrue(steps.hasMessageInList(message), "Message was not found in drafts.");
     }
 
 }

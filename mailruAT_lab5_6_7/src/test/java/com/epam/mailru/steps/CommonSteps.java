@@ -1,6 +1,7 @@
 package com.epam.mailru.steps;
 
 import com.epam.mailru.components.EmailFoldersList;
+import com.epam.mailru.components.MessagesList;
 import com.epam.mailru.entity.Email;
 import com.epam.mailru.pages.DraftsPage;
 import com.epam.mailru.pages.EmailMainPage;
@@ -68,14 +69,14 @@ public class CommonSteps {
         return folderList.goToDrafts();
     }
 
-    public boolean hasMessageInDrafts(Email email) {
-        DraftsPage draftsPage = new DraftsPage(driver);
-        return draftsPage.hasInDrafts(email);
+    public boolean hasMessageInList(Email email) {
+        MessagesList messageList = new MessagesList(driver);
+        return messageList.hasInMessageInEmailList(email);
     }
 
-    public boolean findAndOpenMessageFromDrafts(Email email) {
-        DraftsPage draftsPage = new DraftsPage(driver);
-        return draftsPage.searchAndOpenFromDrafts(email);
+    public boolean openMessageFromList(Email email) {
+        MessagesList messageList = new MessagesList(driver);
+        return messageList.openMessageFromList(email);
     }
 
     public void sendMessage(){
