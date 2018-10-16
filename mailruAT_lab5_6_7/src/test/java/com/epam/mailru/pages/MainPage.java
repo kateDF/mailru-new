@@ -46,4 +46,8 @@ public class MainPage extends AbstractPage {
         doNotRememberCheckbox.click();
     }
 
+    public boolean checkLogOut(){
+        return loginInput.isDisplayed();
+    }
+
 }

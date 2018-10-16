@@ -98,4 +98,9 @@ public class CommonSteps {
         return sentEmails.hasInList(email);
     }
 
+    public boolean checkLogOut(){
+        MainPage mainPage = new MainPage(driver);
+        return mainPage.checkLogOut();
+    }
+
 }
