@@ -22,7 +22,7 @@ public class EmailMainPage extends AbstractPage {
     }
 
     public void clickLogOut() {
-        logOutButton.click();
+        waitForClicableAndClick(logOutButton);
     }
 
     public String getCurrentUserEmail() {
