@@ -41,24 +41,24 @@ public class CommonSteps {
         return emailMainPage.getCurrentUserEmail();
     }
 
-    public MessageCreatingPage clickCreateMessage() {
+    public CreateMessagePage clickCreateMessage() {
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickCreateMessage();
-        return new MessageCreatingPage(driver);
+        return new CreateMessagePage(driver);
     }
 
     public void createMessage(Email email) {
-        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        CreateMessagePage createPage = new CreateMessagePage(driver);
         createPage.createMessage(email);
     }
 
     public void saveAsDraft() {
-        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        CreateMessagePage createPage = new CreateMessagePage(driver);
         createPage.saveEmailAsDraft();
     }
 
     public String getSaveTime() {
-        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        CreateMessagePage createPage = new CreateMessagePage(driver);
         return createPage.getTimeOfSaving();
     }
 
@@ -68,7 +68,7 @@ public class CommonSteps {
     }
 
     public ConfirmationPage sendMessage(){
-        MessageCreatingPage createPage = new MessageCreatingPage(driver);
+        CreateMessagePage createPage = new CreateMessagePage(driver);
         createPage.clickSendButton();
         return new ConfirmationPage(driver);
     }

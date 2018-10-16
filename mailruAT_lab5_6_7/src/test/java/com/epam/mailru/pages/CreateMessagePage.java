@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MessageCreatingPage extends AbstractPage {
+public class CreateMessagePage extends AbstractPage {
 
     private static final String BASE_URL = "https://e.mail.ru/compose/";
 
@@ -38,7 +38,7 @@ public class MessageCreatingPage extends AbstractPage {
         }
     }
 
-    public MessageCreatingPage(WebDriver driver) {
+    public CreateMessagePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
