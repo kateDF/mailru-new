@@ -23,4 +23,8 @@ public abstract class AbstractPage {
                 .until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
+    protected void waitForDocumentReady() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
+    }
+
 }

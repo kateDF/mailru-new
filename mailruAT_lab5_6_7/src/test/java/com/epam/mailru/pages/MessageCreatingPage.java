@@ -75,7 +75,8 @@ public class MessageCreatingPage extends AbstractPage {
     }
 
     public void clickSendButton(){
-        waitForClicableAndClick(sendButton);
+        waitForDocumentReady();
+        sendButton.click();
     }
 
 }
