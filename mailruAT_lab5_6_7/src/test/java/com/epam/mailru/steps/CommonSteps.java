@@ -3,10 +3,7 @@ package com.epam.mailru.steps;
 import com.epam.mailru.components.EmailFoldersList;
 import com.epam.mailru.components.MessagesList;
 import com.epam.mailru.entity.Email;
-import com.epam.mailru.pages.DraftsPage;
-import com.epam.mailru.pages.EmailMainPage;
-import com.epam.mailru.pages.MainPage;
-import com.epam.mailru.pages.MessageCreatingPage;
+import com.epam.mailru.pages.*;
 import org.openqa.selenium.WebDriver;
 
 public class CommonSteps {
@@ -79,9 +76,10 @@ public class CommonSteps {
         return messageList.openMessageFromList(email);
     }
 
-    public void sendMessage(){
+    public ConfirmationPage sendMessage(){
         MessageCreatingPage createPage = new MessageCreatingPage(driver);
         createPage.clickSendButton();
+        return new ConfirmationPage(driver);
     }
 
 }
