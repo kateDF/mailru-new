@@ -46,7 +46,9 @@ public class CommonSteps {
 
     public void createMessage(Email email) {
         CreateMessagePage createPage = new CreateMessagePage(driver);
-        createPage.createMessage(email);
+        createPage.enterRecipient(email.getRecipientEmail());
+        createPage.enterSubject(email.getSubject());
+        createPage.enterTestMessage(email.getTextMessage());
     }
 
     public void saveAsDraft() {

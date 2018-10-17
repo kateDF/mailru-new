@@ -43,13 +43,6 @@ public class CreateMessagePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public CreateMessagePage createMessage(Email email) {
-        enterRecipient(email.getRecipientEmail());
-        enterSubject(email.getSubject());
-        enterTestMessage(email.getTextMessage());
-        return this;
-    }
-
     public CreateMessagePage enterRecipient(String email) {
         intputRecepient.sendKeys(email);
         return this;
