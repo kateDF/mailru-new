@@ -1,32 +1,12 @@
 package com.epam.mailru.components;
 
+import com.epam.mailru.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class AbstractComponent {
-
-    protected WebDriver driver;
+public abstract class AbstractComponent extends AbstractPage {
 
     public AbstractComponent(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
-
-    protected void waitForClicableAndClick(WebElement element) {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.elementToBeClickable(element)).click();
-    }
-
-    protected void waitForDocumentReady() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
-    }
-
-
-    protected void waitElementRefresh(WebElement element) {
-        new WebDriverWait(driver, 15)
-                .until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
-    }
-
 
 }
