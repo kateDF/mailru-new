@@ -101,7 +101,8 @@ public class CommonSteps {
 
     public void searchBySubject(String subject){
         MailboxToolbar toolbar = new MailboxToolbar(driver);
-        toolbar.searchBySubject(subject);
+        toolbar.enterSearchValue(subject);
+        toolbar.clickSearchButton();
     }
 
     public boolean hasEmailSubjectInSearchResult(String subject) {

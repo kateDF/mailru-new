@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 public class ChromeWebdriver {
 
     private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
-   // private static final String CHROME_PATH = "C:/dev/webdrivers/chrome/2.42/chromedriver.exe";
 
     private static WebDriver driver;
 

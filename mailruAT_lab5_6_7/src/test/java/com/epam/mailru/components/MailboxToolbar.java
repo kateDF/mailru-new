@@ -19,19 +19,14 @@ public class MailboxToolbar extends AbstractComponent {
         PageFactory.initElements(driver, this);
     }
 
-    public SearchResultPage searchBySubject(String subject) {
+    public void enterSearchValue(String subject) {
         driver.navigate().refresh();
-        enterSearchValue(subject);
-        clickSearchButton();
-        return new SearchResultPage(driver);
-    }
-
-    private void enterSearchValue(String subject) {
         searchingField.sendKeys(subject);
     }
 
-    private void clickSearchButton() {
+    public SearchResultPage clickSearchButton() {
         searchButton.click();
+        return new SearchResultPage(driver);
     }
 
 }
