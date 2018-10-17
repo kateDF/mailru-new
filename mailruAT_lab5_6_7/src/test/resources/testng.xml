@@ -8,6 +8,7 @@
             <class name="com.epam.mailru.tests.LogInTest"/>
             <class name="com.epam.mailru.tests.CreateEmailAndSaveDraftTest"/>
             <class name="com.epam.mailru.tests.SendingEmailFromDraftsTest"/>
+            <class name="com.epam.mailru.tests.SearchingEmailTest"/>
             <class name="com.epam.mailru.tests.LogOutTest"/>
         </classes>
     </test>
