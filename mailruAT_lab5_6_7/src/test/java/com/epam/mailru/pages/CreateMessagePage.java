@@ -43,30 +43,35 @@ public class CreateMessagePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void createMessage(Email email) {
+    public CreateMessagePage createMessage(Email email) {
         enterRecipient(email.getRecipientEmail());
         enterSubject(email.getSubject());
         enterTestMessage(email.getTextMessage());
+        return this;
     }
 
-    public void enterRecipient(String email) {
+    public CreateMessagePage enterRecipient(String email) {
         intputRecepient.sendKeys(email);
+        return this;
     }
 
-    public void enterSubject(String subject) {
+    public CreateMessagePage enterSubject(String subject) {
         inputSubject.sendKeys(subject);
+        return this;
     }
 
-    public void enterTestMessage(String message) {
+    public CreateMessagePage enterTestMessage(String message) {
         driver.switchTo().frame(containerForFrameMessageInput);
         textAreaMessage.clear();
         textAreaMessage.sendKeys(message);
         driver.switchTo().defaultContent();
+        return this;
     }
 
-    public void saveEmailAsDraft() {
+    public CreateMessagePage saveEmailAsDraft() {
         saveAsDraftButton.click();
         waitForVisibility(saveTime);
+        return this;
     }
 
     public String getTimeOfSaving() {
@@ -74,10 +79,11 @@ public class CreateMessagePage extends AbstractPage {
         return saveTime.getText();
     }
 
-    public void clickSendButton() {
+    public ConfirmationPage clickSendButton() {
         waitForDocumentReady();
         waitElementRefresh(sendButton);
         sendButton.click();
+        return new ConfirmationPage(driver);
     }
 
 }

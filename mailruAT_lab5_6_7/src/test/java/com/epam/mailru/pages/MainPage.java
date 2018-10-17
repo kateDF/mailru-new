@@ -26,24 +26,29 @@ public class MainPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void open() {
+    public MainPage open() {
         driver.get(BASE_URL);
+        return this;
     }
 
-    public void enterUsername(String username) {
+    public MainPage enterUsername(String username) {
         loginInput.sendKeys(username);
+        return this;
     }
 
-    public void enterPassword(String password) {
+    public MainPage enterPassword(String password) {
         passwordInput.sendKeys(password);
+        return this;
     }
 
-    public void clickSubmit() {
+    public EmailMainPage clickSubmit() {
         submitButton.click();
+        return new EmailMainPage(driver);
     }
 
-    public void selectDoNotRemember() {
+    public MainPage selectDoNotRemember() {
         doNotRememberCheckbox.click();
+        return this;
     }
 
     public boolean checkLogOut(){

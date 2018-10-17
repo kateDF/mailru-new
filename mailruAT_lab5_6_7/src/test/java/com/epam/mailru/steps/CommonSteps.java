@@ -15,25 +15,22 @@ public class CommonSteps {
         this.driver = driver;
     }
 
-    public MainPage openMainPage() {
+    public void openMainPage() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        return mainPage;
     }
 
-    public EmailMainPage logIn(String username, String password) {
+    public void logIn(String username, String password) {
         MainPage mainPage = new MainPage(driver);
         mainPage.enterUsername(username);
         mainPage.enterPassword(password);
         mainPage.selectDoNotRemember();
         mainPage.clickSubmit();
-        return new EmailMainPage(driver);
     }
 
-    public MainPage logOut() {
+    public void logOut() {
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickLogOut();
-        return new MainPage(driver);
     }
 
     public String getCurrentUser() {
@@ -41,10 +38,9 @@ public class CommonSteps {
         return emailMainPage.getCurrentUserEmail();
     }
 
-    public CreateMessagePage clickCreateMessage() {
+    public void clickCreateMessage() {
         EmailMainPage emailMainPage = new EmailMainPage(driver);
         emailMainPage.clickCreateMessage();
-        return new CreateMessagePage(driver);
     }
 
     public void createMessage(Email email) {
@@ -62,20 +58,19 @@ public class CommonSteps {
         return createPage.getTimeOfSaving();
     }
 
-    public DraftsPage openDrafts() {
+    public void openDrafts() {
         EmailFoldersList folderList = new EmailFoldersList(driver);
-        return folderList.goToDrafts();
+        folderList.goToDrafts();
     }
 
-    public ConfirmationPage sendMessage(){
+    public void sendMessage(){
         CreateMessagePage createPage = new CreateMessagePage(driver);
         createPage.clickSendButton();
-        return new ConfirmationPage(driver);
     }
 
-    public SentEmailsPage openSentEmailsPage() {
+    public void openSentEmailsPage() {
         EmailFoldersList folderList = new EmailFoldersList(driver);
-        return folderList.goToSentEmailsPage();
+        folderList.goToSentEmailsPage();
     }
 
     public void saveTimeOfSending(Email email){

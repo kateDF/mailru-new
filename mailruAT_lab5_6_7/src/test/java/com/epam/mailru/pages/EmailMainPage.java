@@ -21,8 +21,9 @@ public class EmailMainPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickLogOut() {
+    public MainPage clickLogOut() {
         waitForClicableAndClick(logOutButton);
+        return new MainPage(driver);
     }
 
     public String getCurrentUserEmail() {
@@ -30,8 +31,9 @@ public class EmailMainPage extends AbstractPage {
         return userEmailActual.getText();
     }
 
-    public void clickCreateMessage() {
+    public CreateMessagePage clickCreateMessage() {
         waitForClicableAndClick(createMessageButton);
+        return new CreateMessagePage(driver);
     }
 
 }
