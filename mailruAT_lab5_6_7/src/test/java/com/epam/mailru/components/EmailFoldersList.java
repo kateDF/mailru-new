@@ -15,8 +15,6 @@ public class EmailFoldersList extends AbstractComponent {
     @FindBy(xpath = "//div[@data-id='500001']/a")
     private WebElement draftsPageButton;
 
-    private WebDriver driver;
-
     public EmailFoldersList(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);

@@ -1,6 +1,7 @@
 package com.epam.mailru.steps;
 
 import com.epam.mailru.components.EmailFoldersList;
+import com.epam.mailru.components.MailboxToolbar;
 import com.epam.mailru.entity.Email;
 import com.epam.mailru.pages.*;
 import org.openqa.selenium.WebDriver;
@@ -63,7 +64,7 @@ public class CommonSteps {
         folderList.goToDrafts();
     }
 
-    public void sendMessage(){
+    public void sendMessage() {
         CreateMessagePage createPage = new CreateMessagePage(driver);
         createPage.clickSendButton();
     }
@@ -73,7 +74,7 @@ public class CommonSteps {
         folderList.goToSentEmailsPage();
     }
 
-    public void saveTimeOfSending(Email email){
+    public void saveTimeOfSending(Email email) {
         LocalTime time = LocalTime.now();
         email.setTime(time.toString().substring(0, 5));
     }
@@ -93,9 +94,19 @@ public class CommonSteps {
         return sentEmails.hasInList(email);
     }
 
-    public boolean checkLogOut(){
+    public boolean checkLogOut() {
         MainPage mainPage = new MainPage(driver);
         return mainPage.checkLogOut();
+    }
+
+    public void searchBySubject(String subject){
+        MailboxToolbar toolbar = new MailboxToolbar(driver);
+        toolbar.searchBySubject(subject);
+    }
+
+    public boolean hasEmailSubjectInSearchResult(String subject) {
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+        return searchResultPage.hasInSearchResultBySubject(subject);
     }
 
 }
