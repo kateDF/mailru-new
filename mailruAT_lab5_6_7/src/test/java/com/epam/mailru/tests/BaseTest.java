@@ -1,6 +1,8 @@
 package com.epam.mailru.tests;
 
-import com.epam.mailru.driver.ChromeWebdriver;
+import static com.epam.mailru.driver.WebDriverFactory.BrowserType;
+
+import com.epam.mailru.driver.WebDriverFactory;
 import com.epam.mailru.steps.CommonSteps;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -12,13 +14,13 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        WebDriver chromeDriver = ChromeWebdriver.getInstance();
+        WebDriver chromeDriver = WebDriverFactory.getInstance(BrowserType.CHROME);
         steps = new CommonSteps(chromeDriver);
     }
 
     @AfterClass
     public void tearDown() {
-        ChromeWebdriver.closeDriver();
+        WebDriverFactory.closeDriver();
     }
 
 }
