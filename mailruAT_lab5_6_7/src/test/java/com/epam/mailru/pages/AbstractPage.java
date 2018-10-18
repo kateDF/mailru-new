@@ -1,5 +1,6 @@
 package com.epam.mailru.pages;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,4 +32,16 @@ public abstract class AbstractPage {
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
     }
+
+    protected void safeClick(WebElement element) {
+        for (int i = 0; i <= 2; i++) {
+            try {
+                element.click();
+                break;
+            } catch (StaleElementReferenceException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }
