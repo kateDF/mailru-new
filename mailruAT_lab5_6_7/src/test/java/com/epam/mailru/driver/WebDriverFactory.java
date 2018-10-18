@@ -1,5 +1,6 @@
 package com.epam.mailru.driver;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -24,7 +25,8 @@ public class WebDriverFactory {
     private static WebDriver driver;
 
     public enum BrowserType {
-        REMOTE,
+        REMOTE_CHROME,
+        REMOTE_FIREFOX,
         FIREFOX,
         CHROME,
         IE,
@@ -37,13 +39,20 @@ public class WebDriverFactory {
     public static WebDriver getInstance(BrowserType type) {
         if (driver == null) {
             switch (type) {
-                case REMOTE:
+                case REMOTE_CHROME:
                     try {
-                        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-                        driver = new RemoteWebDriver(new URL(REMOTE_URL), capabilities);
+                        driver = new RemoteWebDriver(new URL(REMOTE_URL), DesiredCapabilities.chrome());
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
+                    break;
+                case REMOTE_FIREFOX:
+                    try {
+                        driver = new RemoteWebDriver(new URL(REMOTE_URL), DesiredCapabilities.firefox());
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 case CHROME:
                     checkDriverProperty(WEBDRIVER_CHROME_DRIVER);
                     driver = new ChromeDriver();
