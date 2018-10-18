@@ -5,8 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
+import java.net.URL;
 
 public class WebDriverFactory {
 
@@ -15,9 +19,12 @@ public class WebDriverFactory {
     private static final String WEBDRIVER_IE_DRIVER = "webdriver.ie.driver";
     private static final String WEBDRIVER_OPERA_DRIVER = "webdriver.opera.driver";
 
+    private static final String REMOTE_URL = "http://127.0.0.1:4444/wd/hub";
+
     private static WebDriver driver;
 
     public enum BrowserType {
+        REMOTE,
         FIREFOX,
         CHROME,
         IE,
@@ -30,6 +37,13 @@ public class WebDriverFactory {
     public static WebDriver getInstance(BrowserType type) {
         if (driver == null) {
             switch (type) {
+                case REMOTE:
+                    try {
+                        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+                        driver = new RemoteWebDriver(new URL(REMOTE_URL), capabilities);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
                 case CHROME:
                     checkDriverProperty(WEBDRIVER_CHROME_DRIVER);
                     driver = new ChromeDriver();
