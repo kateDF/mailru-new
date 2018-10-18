@@ -34,6 +34,7 @@ public abstract class AbstractPage {
     }
 
     protected void safeClick(WebElement element) {
+        //method tries to click until the link to the element is updated
         for (int i = 0; i <= 2; i++) {
             try {
                 element.click();

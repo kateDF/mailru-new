@@ -112,4 +112,17 @@ public class CommonSteps {
         return searchResultPage.hasInSearchResultBySubject(subject);
     }
 
+    public void dragAndDropFromSentToArchive(Email email){
+        SentEmailsPage sentEmails = new SentEmailsPage(driver);
+        sentEmails.dragAndDropToArchive(email);
+    }
+    public void openArchive(){
+        EmailFoldersList folderList = new EmailFoldersList(driver);
+        folderList.goToArchivePage();
+    }
+    public boolean hasMessageInArchive(Email email) {
+        ArchivePage archive = new ArchivePage(driver);
+        return archive.hasInArchive(email);
+    }
+
 }

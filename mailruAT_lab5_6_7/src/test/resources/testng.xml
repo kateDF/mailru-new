@@ -3,12 +3,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="first-suit">
-    <test name="scenario-with-drafts">
+    <test name="user-scenario">
         <classes>
             <class name="com.epam.mailru.tests.LogInTest"/>
             <class name="com.epam.mailru.tests.CreateEmailAndSaveDraftTest"/>
             <class name="com.epam.mailru.tests.SendingEmailFromDraftsTest"/>
             <class name="com.epam.mailru.tests.SearchingEmailTest"/>
+            <class name="com.epam.mailru.tests.DragAndDropEmailTest"/>
             <class name="com.epam.mailru.tests.LogOutTest"/>
         </classes>
     </test>
