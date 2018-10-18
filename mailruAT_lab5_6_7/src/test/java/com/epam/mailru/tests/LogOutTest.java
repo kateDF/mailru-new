@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 public class LogOutTest extends BaseTest {
 
     private static final String USERNAME = "autesttest";
-    private static final String EMAIL_DOMAIN = "@mail.ru";
     private static final String PASSWORD = "test12345";
 
     @BeforeMethod
