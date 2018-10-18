@@ -78,8 +78,15 @@ public class WebDriverFactory {
     }
 
     public static void closeDriver() {
-        driver.quit();
-        driver = null;
+        if(driver != null){
+            try{
+                driver.quit();
+            }catch (Exception e){
+                System.out.println("Can not quit browser");
+            }finally {
+                driver = null;
+            }
+        }
     }
 
     private static void checkDriverProperty(String webDriverName) {
