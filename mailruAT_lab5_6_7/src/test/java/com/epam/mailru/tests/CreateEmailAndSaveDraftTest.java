@@ -5,13 +5,14 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class CreateEmailAndSaveDraftTest extends BaseTest {
 
     private static final String USERNAME = "autesttest";
     private static final String PASSWORD = "test12345";
-    private static Email message = new Email("ATestMailBox@ya.ru", "Subject automation test mailbox " + LocalTime.now(), "Main Text - automation test mailbox");
+    private static Email message = new Email("ATestMailBox@ya.ru", "Subject " + LocalDateTime.now(),
+            "Main Text - automation test mailbox");
 
     @BeforeMethod
     public void setUpPreconditions() {
@@ -24,6 +25,7 @@ public class CreateEmailAndSaveDraftTest extends BaseTest {
         steps.clickCreateMessage();
         steps.createMessage(message);
         steps.saveAsDraft();
+
         steps.openDrafts();
         Assert.assertTrue(steps.hasMessageInDrafts(message), "Message was not found in drafts.");
     }

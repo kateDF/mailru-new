@@ -5,14 +5,15 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class SearchingEmailTest extends BaseTest {
 
     private static final String USERNAME = "autesttest";
     private static final String PASSWORD = "test12345";
 
-    private static Email message = new Email("ATestMailBox@ya.ru", "Subject automation test mailbox " + LocalTime.now(), "Main Text - automation test mailbox");
+    private static Email message = new Email("ATestMailBox@ya.ru", "Subject " + LocalDateTime.now(),
+            "Main Text - automation test mailbox");
 
     @BeforeMethod
     public void setUpPreconditions() {
@@ -27,6 +28,7 @@ public class SearchingEmailTest extends BaseTest {
     public void searchEmailBySubject() {
         steps.openSentEmailsPage();
         steps.searchBySubject(message.getSubject());
+
         Assert.assertTrue(steps.hasEmailSubjectInSearchResult(message.getSubject()), "Message was not found in search results.");
     }
 

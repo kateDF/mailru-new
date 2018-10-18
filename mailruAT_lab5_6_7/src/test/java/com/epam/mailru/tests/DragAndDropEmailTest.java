@@ -28,10 +28,12 @@ public class DragAndDropEmailTest extends BaseTest {
     public void dragEmailFromSentListAndDropToArchive() {
         steps.openSentEmailsPage();
         steps.dragAndDropFromSentToArchive(message);
+
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertFalse(steps.hasMessageInSentEmails(message));
+        softAssert.assertFalse(steps.hasMessageInSentEmails(message), "Message was not moved from drafts.");
+
         steps.openArchive();
-        Assert.assertTrue(steps.hasMessageInArchive(message));
+        Assert.assertTrue(steps.hasMessageInArchive(message), "Message was not found in archive.");
     }
 
 }
