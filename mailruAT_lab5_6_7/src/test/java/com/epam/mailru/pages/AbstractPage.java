@@ -1,9 +1,8 @@
 package com.epam.mailru.pages;
 
-import org.apache.log4j.Logger;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,7 +10,7 @@ public abstract class AbstractPage {
 
     protected WebDriver driver;
 
-    protected final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    protected final Logger logger = LogManager.getRootLogger();
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
@@ -46,6 +45,14 @@ public abstract class AbstractPage {
                 logger.error(e.getMessage());
             }
         }
+    }
+
+    protected void highlightElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", element);
+    }
+
+    protected void unHighlightElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", element);
     }
 
 }

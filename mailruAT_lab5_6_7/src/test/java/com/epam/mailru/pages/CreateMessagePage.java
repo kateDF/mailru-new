@@ -74,8 +74,7 @@ public class CreateMessagePage extends AbstractPage {
 
     public ConfirmationPage clickSendButton() {
         waitForDocumentReady();
-        waitElementRefresh(sendButton);
-        sendButton.click();
+        safeClick(sendButton);
         return new ConfirmationPage(driver);
     }
 

@@ -1,6 +1,5 @@
 package com.epam.mailru.driver;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -78,12 +77,12 @@ public class WebDriverFactory {
     }
 
     public static void closeDriver() {
-        if(driver != null){
-            try{
+        if (driver != null) {
+            try {
                 driver.quit();
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Can not quit browser");
-            }finally {
+            } finally {
                 driver = null;
             }
         }

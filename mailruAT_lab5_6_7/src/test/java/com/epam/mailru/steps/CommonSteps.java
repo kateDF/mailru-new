@@ -4,7 +4,8 @@ import com.epam.mailru.components.EmailFoldersList;
 import com.epam.mailru.components.MailboxToolbar;
 import com.epam.mailru.entity.Email;
 import com.epam.mailru.pages.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import java.time.LocalTime;
@@ -13,7 +14,7 @@ public class CommonSteps {
 
     private WebDriver driver;
 
-    protected final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    protected final Logger logger = LogManager.getRootLogger();
 
     public CommonSteps(WebDriver driver) {
         this.driver = driver;
