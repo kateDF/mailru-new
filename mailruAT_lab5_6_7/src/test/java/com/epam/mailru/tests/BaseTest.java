@@ -18,8 +18,8 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        WebDriver chromeDriver = WebDriverFactory.getInstance(BrowserType.CHROME);
-        steps = new CommonSteps(chromeDriver);
+        WebDriver webDriverInstance = WebDriverFactory.getInstance(BrowserType.CHROME);
+        steps = new CommonSteps(webDriverInstance);
         logger.info("Driver initialized");
     }
 
