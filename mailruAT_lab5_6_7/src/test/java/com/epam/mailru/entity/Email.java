@@ -2,34 +2,19 @@ package com.epam.mailru.entity;
 
 public class Email {
 
-    private String recipientEmail;
-    private String subject;
-    private String textMessage;
-    private String time;
-    private boolean deliveryNotification;
+    private String recipientEmail; // required
+    private String subject; // required
+    private String textMessage; // required
+    private String time; // optional
+    private boolean deliveryNotification; // optional
 
-    public Email() {
-    }
 
-    public Email(String recipientEmail, String subject, String textMessage) {
-        this.recipientEmail = recipientEmail;
-        this.subject = subject;
-        this.textMessage = textMessage;
-    }
-
-    public Email(String recipientEmail, String subject, String textMessage, String time) {
-        this.recipientEmail = recipientEmail;
-        this.subject = subject;
-        this.textMessage = textMessage;
-        this.time = time;
-    }
-
-    public Email(String recipientEmail, String subject, String textMessage, String time, boolean deliveryNotification) {
-        this.recipientEmail = recipientEmail;
-        this.subject = subject;
-        this.textMessage = textMessage;
-        this.time = time;
-        this.deliveryNotification = deliveryNotification;
+    private Email(EmailBuilder builder) {
+        this.recipientEmail = builder.recipientEmail;
+        this.subject = builder.subject;
+        this.textMessage = builder.textMessage;
+        this.time = builder.time;
+        this.deliveryNotification = builder.deliveryNotification;
     }
 
     public String getRecipientEmail() {
@@ -70,6 +55,36 @@ public class Email {
 
     public void setDeliveryNotification(boolean deliveryNotification) {
         this.deliveryNotification = deliveryNotification;
+    }
+
+    public static class EmailBuilder {
+        private String recipientEmail;
+        private String subject;
+        private String textMessage;
+        private String time;
+        private boolean deliveryNotification;
+
+        public EmailBuilder(String recipientEmail, String subject, String textMessage) {
+            this.recipientEmail = recipientEmail;
+            this.subject = subject;
+            this.textMessage = textMessage;
+        }
+
+        public EmailBuilder time(String time) {
+            this.time = time;
+            return this;
+        }
+
+        public EmailBuilder deliveruNotification(boolean deliveryNotification) {
+            this.deliveryNotification = deliveryNotification;
+            return this;
+        }
+
+        public Email build() {
+            Email email = new Email(this);
+            return email;
+        }
+
     }
 
     @Override

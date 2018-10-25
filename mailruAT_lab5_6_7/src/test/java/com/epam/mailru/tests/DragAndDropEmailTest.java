@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 public class DragAndDropEmailTest extends BaseTest {
 
     private static final User defaultUser = User.getDefaultUser();
-    private static Email message = new Email("ATestMailBox@ya.ru", "Subject " + LocalDateTime.now(),
-            "Main Text - automation test mailbox");
+    private static Email message = new Email.EmailBuilder("ATestMailBox@ya.ru", "Subject " + LocalDateTime.now(),
+            "AT Text").build();
 
     @BeforeMethod
     public void setUpPreconditions() {
