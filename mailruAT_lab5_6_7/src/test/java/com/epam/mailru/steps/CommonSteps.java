@@ -3,6 +3,7 @@ package com.epam.mailru.steps;
 import com.epam.mailru.components.EmailFoldersList;
 import com.epam.mailru.components.MailboxToolbar;
 import com.epam.mailru.entity.Email;
+import com.epam.mailru.entity.User;
 import com.epam.mailru.pages.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,11 +27,11 @@ public class CommonSteps {
         logger.info("Open mail.ru main page");
     }
 
-    public void logIn(String username, String password) {
-        logger.info("Log in with username: " + username + " password: " + password);
+    public void logIn(User user) {
+        logger.info("Log in with username: " + user.getUsername() + " password: " + user.getPassword());
         MainPage mainPage = new MainPage(driver);
-        mainPage.enterUsername(username);
-        mainPage.enterPassword(password);
+        mainPage.enterUsername(user.getUsername());
+        mainPage.enterPassword(user.getPassword());
         mainPage.selectDoNotRemember();
         mainPage.clickSubmit();
     }
