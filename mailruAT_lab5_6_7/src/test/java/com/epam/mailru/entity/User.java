@@ -1,10 +1,6 @@
 package com.epam.mailru.entity;
 
-import java.util.ResourceBundle;
-
 public class User {
-
-    private static final  ResourceBundle bundle = ResourceBundle.getBundle("user-default");
 
     private String username;
     private String password;
@@ -58,10 +54,6 @@ public class User {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    public static User getDefaultUser(){
-        return new User(bundle.getString("user"), bundle.getString("password"));
     }
 
 }

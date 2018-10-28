@@ -57,36 +57,6 @@ public class Email {
         this.deliveryNotification = deliveryNotification;
     }
 
-    public static class EmailBuilder {
-        private String recipientEmail;
-        private String subject;
-        private String textMessage;
-        private String time;
-        private boolean deliveryNotification;
-
-        public EmailBuilder(String recipientEmail, String subject, String textMessage) {
-            this.recipientEmail = recipientEmail;
-            this.subject = subject;
-            this.textMessage = textMessage;
-        }
-
-        public EmailBuilder time(String time) {
-            this.time = time;
-            return this;
-        }
-
-        public EmailBuilder deliveruNotification(boolean deliveryNotification) {
-            this.deliveryNotification = deliveryNotification;
-            return this;
-        }
-
-        public Email build() {
-            Email email = new Email(this);
-            return email;
-        }
-
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -121,6 +91,36 @@ public class Email {
                 ", time='" + time + '\'' +
                 ", deliveryNotification=" + deliveryNotification +
                 '}';
+    }
+
+    public static class EmailBuilder {
+        private String recipientEmail;
+        private String subject;
+        private String textMessage;
+        private String time;
+        private boolean deliveryNotification;
+
+        public EmailBuilder(String recipientEmail, String subject, String textMessage) {
+            this.recipientEmail = recipientEmail;
+            this.subject = subject;
+            this.textMessage = textMessage;
+        }
+
+        public EmailBuilder time(String time) {
+            this.time = time;
+            return this;
+        }
+
+        public EmailBuilder deliveruNotification(boolean deliveryNotification) {
+            this.deliveryNotification = deliveryNotification;
+            return this;
+        }
+
+        public Email build() {
+            Email email = new Email(this);
+            return email;
+        }
+
     }
 
 }
